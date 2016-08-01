@@ -25,9 +25,5 @@ public class Brick : MonoBehaviour {
 		}
 	}
 	
-	//TODO delete this method when the player can actually win !
-	void simulateWin(){
-		
-		levelManager.LoadNextLevel();
-	}
+
 }
