@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Brick : MonoBehaviour {
 
-	public int maxHits;
+
 	public Sprite[] hitSprites;
 	private int timesHit;
 	private LevelManager levelManager;
@@ -20,8 +20,8 @@ public class Brick : MonoBehaviour {
 	
 	void OnCollisionEnter2D (Collision2D col){
 		timesHit++;
-		
-		if (this.timesHit >= this.maxHits) {
+		int maxHits = hitSprites.Length + 1;
+		if (timesHit >= maxHits) {
 			Destroy(gameObject);
 		} else{
 			LoadSprites();
@@ -29,8 +29,13 @@ public class Brick : MonoBehaviour {
 	}
 	
 	void LoadSprites(){
-	 int spriteIndex = timesHit -1;
-	 this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		int spriteIndex = timesHit -1;
+		
+	 	if (hitSprites[spriteIndex]) {
+	 	
+			this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		}
+	 
 	}
 
 }
