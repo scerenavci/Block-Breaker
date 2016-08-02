@@ -19,6 +19,14 @@ public class Brick : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D (Collision2D col){
+		bool isBreakable = (this.tag == "Breakable");
+		if (isBreakable) {
+			HandleHits();
+		}
+		
+	}
+	
+	void HandleHits(){
 		timesHit++;
 		int maxHits = hitSprites.Length + 1;
 		if (timesHit >= maxHits) {
@@ -31,9 +39,9 @@ public class Brick : MonoBehaviour {
 	void LoadSprites(){
 		int spriteIndex = timesHit -1;
 		
-	 	if (hitSprites[spriteIndex]) {
-	 	
-			this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		if (hitSprites[spriteIndex]) {
+			 	
+		this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
 		}
 	 
 	}
