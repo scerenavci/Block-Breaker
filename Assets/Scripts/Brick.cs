@@ -27,7 +27,7 @@ public class Brick : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D (Collision2D col){
-		AudioSource.PlayClipAtPoint (crack, transform.position);
+		
 		if (isBreakable) {
 			HandleHits();
 		}		
@@ -38,6 +38,7 @@ public class Brick : MonoBehaviour {
 		int maxHits = hitSprites.Length + 1;
 		if (timesHit >= maxHits) {
 			breakableCount--;
+			AudioSource.PlayClipAtPoint (crack, transform.position, 0.4f);
 			levelManager.BrickDestroyed();
 			Destroy(gameObject);
 		} else{
