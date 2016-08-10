@@ -38,6 +38,7 @@ public class Brick : MonoBehaviour {
 		int maxHits = hitSprites.Length + 1;
 		if (timesHit >= maxHits) {
 			breakableCount--;
+			Debug.Log(breakableCount);
 			AudioSource.PlayClipAtPoint (crack, transform.position, 0.4f);
 			levelManager.BrickDestroyed();
 			Destroy(gameObject);
